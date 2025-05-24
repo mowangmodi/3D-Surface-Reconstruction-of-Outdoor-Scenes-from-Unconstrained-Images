@@ -12,4 +12,4 @@ conda activate four
 
 ## Dataset Setup
 
-Download the [Heritage-Recon dataset](https://drive.google.com/drive/folders/1eZvmk4GQkrRKUNZpagZEIY_z8Lsdw94v)
+  Download the [Heritage-Recon dataset](https://drive.google.com/drive/folders/1eZvmk4GQkrRKUNZpagZEIY_z8Lsdw94v)
