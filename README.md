@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# four
+# 3D-Surface-Reconstruction-of-Outdoor-Scenes-from-Unconstrained-Images
 ## nothing
 =======
 ## 🔧 Installation
