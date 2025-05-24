@@ -11,5 +11,4 @@ conda activate four
 ## Reproduce Reconstruction Results on Heritage-Recon
 
 ## Dataset Setup
-
   Download the [Heritage-Recon dataset](https://drive.google.com/drive/folders/1eZvmk4GQkrRKUNZpagZEIY_z8Lsdw94v)
