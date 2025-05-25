@@ -41,7 +41,7 @@ done
 # Training
 To train scenes in our Heritage-Recon dataset:
 ```bash
-python train.py --cfg_path config/train_pantheon_exterior.yaml --num_gpus 1 \
+python train.py --cfg_path /path/to/the/config/train_pantheon_exterior.yaml --num_gpus 1 \
 				--num_nodes 1 --num_epochs 5 \
 				--batch_size 512 --test_batch_size 512 \
 				--num_workers 8 --exp_name exp_pe
