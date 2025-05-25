@@ -18,12 +18,9 @@ git clone https://github.com/mowangmodi/3D-Surface-Reconstruction-of-Outdoor-Sce
 - You can create the Conda environment using either of the following methods:
 
 ```bash
-# Method 1: Create manually
-conda create -n nrw python=3.8
 
-# Method 2: Create from environment.yaml (if provided)
 conda env create -f environment.yaml
-
+# Download the segmentation model
 scripts/download_sem_model.sh
 ```
 # Dataset setup
