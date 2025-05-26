@@ -43,7 +43,8 @@ python train.py --cfg_path /path/to/the/config/train_pantheon_exterior.yaml --nu
 				--batch_size 512 --test_batch_size 512 \
 				--num_workers 8 --exp_name exp_pe
 ```
-# Pretrained models will be released soon. Stay tuned!
+# Pretrained models
+You can [download](https://drive.google.com/drive/folders/1ImpyuwI327ZEWlREQm-Xm7xRW96pFiY4) the trained 3D model we extracted from here for evaluation.
 
 # Evaluating
 First, extracting mesh from a checkpoint you want to evaluate:
