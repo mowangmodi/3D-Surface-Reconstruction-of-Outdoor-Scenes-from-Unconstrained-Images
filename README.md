@@ -80,6 +80,7 @@ python utils/eval_mesh.py \
 
 # Reconstructing Custom Data 
 The COLMAP workspace should be looking like this
+```bash
 └── brandenburg_gate
   └── brandenburg_gate.tsv
   ├── cache_sgs
@@ -103,6 +104,7 @@ The COLMAP workspace should be looking like this
       ├── 99250931_9123849334.jpg
       ├── 99388860_2887395078.jpg
       ├──.....
+```
 
 - Obtain relevant parameters
 note：Modify the path
@@ -110,6 +112,7 @@ note：Modify the path
 bash scripts/preprocess_data.sh 
 ```
 After running bash 'scripts/preprocess_data.sh', Create a file config.yaml into workspace to write metadata. The target scene needs to be normalized into a unit sphere, which require manual selection. One simple way is to use SFM key-points points from COLMAP to determine the origin and radius. Also, a bounding box is required, which can be set to [origin-raidus, origin+radius], or only the region you're interested in.
+```bash
 {
     name: brandenburg_gate, # scene name
     origin: [ 0.568699, -0.0935532, 6.28958 ], 
@@ -123,6 +126,7 @@ After running bash 'scripts/preprocess_data.sh', Create a file config.yaml into 
             [ 0, 0, 1, 0],
             [ 0, 0, 0, 1]],
 }
+```
 
 - Obtain the segmentation images (in case the ones above have incorrect resolution).
 ```bash
