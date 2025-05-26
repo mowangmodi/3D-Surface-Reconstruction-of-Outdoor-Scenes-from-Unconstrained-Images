@@ -78,9 +78,69 @@ python utils/eval_mesh.py \
   --bbx_name            eval_bbx
 ```
 
-# Reconstructing Custom Data (Will Be Released Later)
+# Reconstructing Custom Data 
+The COLMAP workspace should be looking like this
+└── brandenburg_gate
+  └── brandenburg_gate.tsv
+  ├── cache_sgs
+    └── splits
+        ├── rays1_meta_info.json
+        ├── rgbs1_meta_info.json
+        ├── split_0
+            ├── rays1.h5
+            └── rgbs1.h5
+        ├── split_1
+        ├──.....
+  ├── config.yaml
+  ├── dense
+    └── sparse
+        ├── cameras.bin
+        ├── images.bin
+        ├── points3D.bin
+  └── semantic_maps
+      ├── 99119670_397881696.jpg
+      ├── 99128562_6434086647.jpg
+      ├── 99250931_9123849334.jpg
+      ├── 99388860_2887395078.jpg
+      ├──.....
 
+- Obtain relevant parameters
+note：Modify the path
+```bash
+bash scripts/preprocess_data.sh 
+```
+After running bash 'scripts/preprocess_data.sh', Create a file config.yaml into workspace to write metadata. The target scene needs to be normalized into a unit sphere, which require manual selection. One simple way is to use SFM key-points points from COLMAP to determine the origin and radius. Also, a bounding box is required, which can be set to [origin-raidus, origin+radius], or only the region you're interested in.
+{
+    name: brandenburg_gate, # scene name
+    origin: [ 0.568699, -0.0935532, 6.28958 ], 
+    radius: 4.6,
+    eval_bbx: [[-14.95992661, -1.97035599, -16.59869957],[48.60944366, 30.66258621, 12.81980324]],
+    voxel_size: 0.25,
+    min_track_length: 10,
+    # The following configuration is only used in evaluation, can be ignored for your own scene
+    sfm2gt: [[1, 0, 0, 0],
+            [ 0, 1, 0, 0],
+            [ 0, 0, 1, 0],
+            [ 0, 0, 0, 1]],
+}
 
+- Obtain the segmentation images (in case the ones above have incorrect resolution).
+```bash
+- python tools/prepare_data/prepare_semantic_maps.py --root_dir path/to/the/data/heritage-recon/custom_data --gpu 1
+```
+- Segment training and testing images
+```bash
+python tools/prepare_data/prepare_data_split.py --root_dir data/heritage-recon/stand --num_test 1 --min_observation -1 --roi_threshold 0 --static_threshold 0
+```
+
+- Generate training data cache
+```bash
+python tools/prepare_data/prepare_data_cache.py --root_dir data/heritage-recon/custom_data --dataset_name phototourism --cache_dir cache_sgs --img_downscale 1 --semantic_map_path semantic_maps --split_to_chunks 64 
+```
+- extracting mesh from a checkpoint:
+```bash
+bash scripts/sdf_extract.sh gate config/train_custom_data.yaml path/to/the/model.ckpt 10
+```
 
 # Acknowledgement
 Part of our code is derived from [nerf_pl](https://github.com/kwea123/nerf_pl) , [NeuS](https://github.com/Totoro97/NeuS), [NeuralRecon-W](https://github.com/zju3dv/NeuralRecon-W),  [Neuralangelo](https://github.com/NVlabs/neuralangelo). We sincerely acknowledge and appreciate the outstanding contributions of their authors.
