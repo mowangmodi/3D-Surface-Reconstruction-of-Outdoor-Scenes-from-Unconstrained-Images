@@ -5,7 +5,7 @@ This implementation only includes libraries that have been actually tested and u
 # Hardware
 - **OS**: Ubuntu 20.04  
 - **GPU**: NVIDIA GPU with Compute Capability ≥ 8.6 and memory > 24GB  *(Tested on RTX 4090 with CUDA 11.7; other versions may also be compatible))* 
-- **RAM**: 128GB 
+- **RAM**:  At least **128GB** (less cause data loading to be killed)
 #  Software
 
 Make sure you have Git installed. Then run the following command to clone the repository:
