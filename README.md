@@ -134,7 +134,7 @@ After running bash 'scripts/preprocess_data.sh', Create a file config.yaml into 
 ```
 - Segment training and testing images
 ```bash
-python tools/prepare_data/prepare_data_split.py --root_dir data/heritage-recon/stand --num_test 1 --min_observation -1 --roi_threshold 0 --static_threshold 0
+python tools/prepare_data/prepare_data_split.py --root_dir data/heritage-recon/custom_data --num_test 1 --min_observation -1 --roi_threshold 0 --static_threshold 0
 ```
 
 - Generate training data cache
@@ -143,7 +143,7 @@ python tools/prepare_data/prepare_data_cache.py --root_dir data/heritage-recon/c
 ```
 - extracting mesh from a checkpoint:
 ```bash
-bash scripts/sdf_extract.sh gate config/train_custom_data.yaml path/to/the/model.ckpt 10
+bash scripts/sdf_extract.sh gate config/train_custom_data.yaml path/to/the/custom_data_model.ckpt 10
 ```
 
 # Acknowledgement
